@@ -1,12 +1,17 @@
 import { Pressable, View, Text, StyleSheet } from "react-native";
 import { GlobalStyles } from "../../constants/styles"
 import { getFormattedDate } from "../../util/date";
+import {useNavigation} from '@react-navigation/native';
 
 
-function ExpenseItem({description, amount, date}) {
+function ExpenseItem({id, description, amount, date}) {
+
+  const navigation = useNavigation();// we are using this useNavigation hook so we can navigate from a screen to another
 
   function expensePressHandler(){
-
+    navigation.navigate('ManageExpense', {expenseId: id});
+    //when we tap an item we navigate to the ManageExpense screen
+   
   }
 
   return (
